@@ -2,12 +2,12 @@
     padding: 20px;
     max-width: 800px;
     margin-left: 260px;
-    font-size: 18px; /* ✅ Increases default font size */
+    font-size: 18px; 
   }
   
   .markdown-container h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 36px; /* ✅ Bigger headings */
+    font-size: 36px;
     font-weight: bold;
   }
   
@@ -25,27 +25,27 @@
   
   .markdown-container p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px; /* ✅ Increases paragraph text size */
+    font-size: 18px; 
   }
   
   .markdown-container img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto; /* Centers the block image */
+    margin: 0 auto; 
 }
 
 
 .markdown-container figure {
     font-size: 12px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 20px 0;  /* Reduce the margin (top and bottom: 20px, left and right: 0px) */
-    text-align: center; /* Ensures figcaption is centered */
+    margin: 20px 0;  
+    text-align: center; 
 }
 
 .markdown-container code {
     font-size: 16px;
-    color: #d63384; /* Pink color */
+    color: #d63384;
     padding: 2px 4px;
     border-radius: 4px;
     font-family: monospace;
