@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        var path = window.location.pathname;
-        var base = "/forex-ml-exploration";
-        window.location.replace(base + "/?" + path);
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
+  <script>
+    var path = window.location.pathname;
+    var base = "/forex-ml-exploration";
+    window.location.replace(base + "/#" + path.replace(base, ""));
+  </script>
 </head>
 <body>
-    <h1>Redirecting...</h1>
+  <h1>Redirecting...</h1>
 </body>
 </html>
