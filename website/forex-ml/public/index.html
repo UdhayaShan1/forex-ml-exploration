@@ -1,0 +1,10 @@
+<script>
+    (function() {
+      const path = window.location.pathname;
+      const base = "/forex-ml-exploration";
+      if (path.startsWith(base)) {
+        window.location.replace(`${base}/#${path.replace(base, "")}`);
+      }
+    })();
+  </script>
+  
