@@ -19,7 +19,7 @@ function Misleading() {
 We have all seen LSTM-generated graphs like the one below, showcasing incredible prediction accuracy.
 
 <figure>
-  <img src="/images/lstm-stock.png" alt="Misleading Result of LSTM" width="500px">
+  <img src="${import.meta.env.BASE_URL}images/lstm-stock.png" alt="Misleading Result of LSTM" width="500px">
   <figcaption>Source: <a href="https://www.linkedin.com/pulse/predicting-nordeas-stock-price-using-lstm-neural-network-jan-nordin/" target="_blank">https://www.linkedin.com/pulse/predicting-nordeas-stock-price-using-lstm-neural-network-jan-nordin/</a></figcaption>
 </figure>
 
@@ -249,7 +249,7 @@ for i in range(num_epochs):
 \`\`\`
 
 <figure>
-  <img src="/images/neural-mse-loss.png" alt="Neural network training and test loss" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/neural-mse-loss.png" alt="Neural network training and test loss" width="1000px">
 </figure>
 
 
@@ -305,7 +305,7 @@ plt.show()
 \`\`\`
 
 <figure>
-  <img src="/images/predicted-actual-price.png" alt="Predicted and Actual Price" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/predicted-actual-price.png" alt="Predicted and Actual Price" width="1000px">
 </figure>
 
 **WOW** That's amazing! 
@@ -340,7 +340,7 @@ plt.show()
 \`\`\`
 
 <figure>
-  <img src="/images/50sma.png" alt="Actual Price with 50sma" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/50sma.png" alt="Actual Price with 50sma" width="1000px">
 </figure>
 
 Ok so what? Our model still does better? Let's see what a SMA with window size 1 looks like.
@@ -348,7 +348,7 @@ Ok so what? Our model still does better? Let's see what a SMA with window size 1
 ## ⚠️ The Pitfall: Our Model Just Mimics a Moving Average
 
 <figure>
-  <img src="/images/1sma.png" alt="Actual Price with 1sma" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/1sma.png" alt="Actual Price with 1sma" width="1000px">
 </figure>
 
 That is exactly our neural network prediction! So what is going on? Let's take a closer look at past 40 days prediction
@@ -366,7 +366,7 @@ plt.show()
 \`\`\`
 
 <figure>
-  <img src="/images/past40days.png" alt="Past 40 days" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/past40days.png" alt="Past 40 days" width="1000px">
 </figure>
 
 Essentially, our neural network is **not truly forecasting** future prices—it is merely **replicating past prices**! By staying close to the previous day's price, regardless of whether the market moves up or down, the model **minimizes its Mean Squared Error (MSE)** and produces what appears to be **highly accurate predictions**.
