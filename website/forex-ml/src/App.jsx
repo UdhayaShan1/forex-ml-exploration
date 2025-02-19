@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <Router>
+    <Router baseline="/">
       <Header />
 
       <div className="flex">
