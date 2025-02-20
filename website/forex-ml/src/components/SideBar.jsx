@@ -8,8 +8,11 @@ function SideBar({ isOpen }) {
       <p className="sidebar-text">Explore the different sections here!</p>
       <ul className="sidebar-list">
         <li><Link to="/" className="sidebar-link">Home</Link></li>
-        <li><Link to="/misleading" className="sidebar-link">Misleading Graphs</Link></li>
+        <p>The Motivation</p>
+        <li><Link to="/misleading" className="sidebar-link">Misleading Regression</Link></li>
         <li><Link to="/classification" className="sidebar-link">Classification Instead?</Link></li>
+        <p>Models</p>
+        <li><Link to="/logistic" className="sidebar-link">Logistic Regression</Link></li>
       </ul>
     </div>
   );
