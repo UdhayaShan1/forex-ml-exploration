@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"; // Choose your theme
 import { materialLight } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import "/src/pages/LogisticStyles.css";
 
 function validNumber(str) {
     let checkStr = str.trim();
@@ -31,12 +32,37 @@ function sigmoid2(x) {
 function Logistic() {
     const [features, setFeatures] = useState({x1 : "", x2 : "", x3 : "", x4 : ""});
     const [featuresError, setFeatureError] = useState("");
-
-    const [activate, setActivate] = useState(false);
+    //const [activate, setActivate] = useState(false);
     const [linearSum , setLinearSum] = useState("");
     const [sigmoid, setSigmoid] = useState("");
     const [threshold, setThreshold] = useState(0.5);
     const [tradeFeedback, setTradeFeedback] = useState("");
+
+    const clearOutput = () => {
+        setLinearSum("");
+        setSigmoid("");
+        setTradeFeedback("");
+    }
+
+    const onCalculate = () => {
+        setFeatureError("");
+        //-0.88898459  4.131525   -4.70063957  0.34692396
+        let x1 = Number(features.x1);
+        let x2 = Number(features.x2);
+        let x3 = Number(features.x3);
+        let x4 = Number(features.x4);
+        let result = -0.88898459 * x1 + 4.131525 * x2 + -4.70063957 * x3 + 0.34692396 * x4;
+        setLinearSum(result.toFixed(3));
+        let sigmoidResult = sigmoid2(result);
+        console.log(sigmoidResult);
+        setSigmoid(sigmoidResult.toFixed(3));
+
+        if (sigmoidResult >= threshold) {
+            setTradeFeedback("buy");
+        } else {
+            setTradeFeedback("sell");
+        }
+    }
 
     useEffect(() => {
         let stringError = "";
@@ -52,9 +78,9 @@ function Logistic() {
 
         if (stringError.length != 0) {
             setFeatureError(stringError);
+            clearOutput();
         } else {
-            setActivate(true);
-            setFeatureError("Submit!");
+            onCalculate();
         }
     }, [features]);
 
@@ -118,7 +144,7 @@ In our regression section, we use OHLC (Open, High, Low, Close) prices as our fe
 
 **Suppose, our relation**
 
-$$ z = \\beta_0 + Open * X_1 + High * X_2 + Low * X_3 + Close * X_4$$
+$$ z = \\beta_0 + Open * \\beta_1 + High * \\beta_2 + Low * \\beta_3 + Close * \\beta_4$$
 
 **And a sample of**
 
@@ -146,29 +172,11 @@ This is achieved through gradient descent, where the model updates its weights (
 
 However, modern libraries like \`sklearn's LogisticRegression\` does most of the heavy lifiting anyways.
 
-### 5. Play around
+### 5. 🔢 Play Around with the Model</h2>
+<p>Enter OHLC (Open, High, Low, Close) prices to see the model's prediction:</p>
     `
 
-    const onCalculate = (e) => {
-        e.preventDefault();
-        setFeatureError("");
-        //-0.88898459  4.131525   -4.70063957  0.34692396
-        let x1 = Number(features.x1);
-        let x2 = Number(features.x2);
-        let x3 = Number(features.x3);
-        let x4 = Number(features.x4);
-        let result = -0.88898459 * x1 + 4.131525 * x2 + -4.70063957 * x3 + 0.34692396 * x4;
-        setLinearSum(result.toFixed(3));
-        let sigmoidResult = sigmoid2(result);
-        console.log(sigmoidResult);
-        setSigmoid(sigmoidResult.toFixed(3));
 
-        if (sigmoidResult >= threshold) {
-            setTradeFeedback("buy");
-        } else {
-            setTradeFeedback("sell");
-        }
-    }
 
     return (
       <div className="markdown-container">
@@ -197,17 +205,58 @@ However, modern libraries like \`sklearn's LogisticRegression\` does most of the
           >
               {markdown}
           </ReactMarkdown>
+        
+          <div className="play-around-section">
+            <div className="input-group">
+                    <label>📈 Open Price:</label>
+                    <input 
+                        type='number' 
+                        placeholder="e.g., 1.2841"
+                        value={features.x1}
+                        onChange={(e) => onChangeFeatures("x1", e.target.value)}
+                    />
+                </div>
 
-          <input type='text' placeholder="Input Open" onChange={(e) => onChangeFeatures("x1", e.target.value)}></input>
-          <input type='text' placeholder="Input High" onChange={(e) => onChangeFeatures("x2", e.target.value)}></input>
-          <input type='text' placeholder="Input Low" onChange={(e) => onChangeFeatures("x3", e.target.value)}></input>
-          <input type='text' placeholder="Input Close" onChange={(e) => onChangeFeatures("x4", e.target.value)}></input>
-          {activate && <button onClick={onCalculate}>Calculate</button>}
+                <div className="input-group">
+                    <label>📊 High Price:</label>
+                    <input 
+                        type='number' 
+                        placeholder="e.g., 1.2932"
+                        value={features.x2}
+                        onChange={(e) => onChangeFeatures("x2", e.target.value)}
+                    />
+                </div>
 
-          {featuresError && <p>{featuresError}</p>}
-          {linearSum && <p>Linear Sum is {linearSum}</p>}
-          {sigmoid && <p>Sigmoid is {sigmoid}</p>}
-          {tradeFeedback && <p>A {tradeFeedback} signal!</p>}
+                <div className="input-group">
+                    <label>📉 Low Price:</label>
+                    <input 
+                        type='number' 
+                        placeholder="e.g., 1.2735"
+                        value={features.x3}
+                        onChange={(e) => onChangeFeatures("x3", e.target.value)}
+                    />
+                </div>
+
+                <div className="input-group">
+                    <label>🔽 Close Price:</label>
+                    <input 
+                        type='number' 
+                        placeholder="e.g., 1.2774"
+                        value={features.x4}
+                        onChange={(e) => onChangeFeatures("x4", e.target.value)}
+                    />
+                </div>
+                
+                
+
+                {featuresError && <p className="error-message">{featuresError}</p>}
+
+                {linearSum && <p className="result-text">📊 <strong>Linear Sum:</strong> {linearSum}</p>}
+                {sigmoid && <p className="result-text">📈 <strong>Sigmoid Output:</strong> {sigmoid}</p>}
+                {tradeFeedback && <p className={`trade-signal ${tradeFeedback === "buy" ? "buy" : "sell"}`}>
+                    🚀 <strong>Trade Signal:</strong> {tradeFeedback.toUpperCase()}!
+                                    </p>}
+          </div>
       </div>
   );
 

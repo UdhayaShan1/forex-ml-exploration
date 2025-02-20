@@ -43,6 +43,10 @@
   margin: 12px 0;
 }
 
+.sidebar-seperator {
+  font-weight: 700;
+}
+
 .sidebar-link {
   display: block;
   padding: 12px 18px;
