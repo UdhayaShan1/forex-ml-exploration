@@ -16,7 +16,7 @@ function Misleading() {
 
 # 📢 Too Good to Be True?
 
-We have all seen LSTM-generated graphs like the one below, showcasing incredible prediction accuracy.
+We have all seen prediction graphs from LSTM regression models like the one below, showcasing incredible prediction accuracy.
 
 <figure>
   <img src="${import.meta.env.BASE_URL}images/lstm-stock.png" alt="Misleading Result of LSTM" width="500px">
@@ -131,7 +131,7 @@ def create_seq(data, targets, seq_length):
         y.append(targets[i-1])
     return np.array(X), np.array(y)
 
-seq_length = 1
+seq_length = 100
 X_train_seq, Y_train_seq = create_seq(train_scaled, train_target_scaled, seq_length)
 X_test_seq, Y_test_seq = create_seq(test_scaled, test_target_scaled, seq_length)
 
@@ -366,7 +366,7 @@ plt.show()
 \`\`\`
 
 <figure>
-  <img src="${import.meta.env.BASE_URL}images/past40days.png" alt="Past 40 days" width="1000px">
+  <img src="${import.meta.env.BASE_URL}images/past40days-annotated.png" alt="Past 40 days" width="1000px">
 </figure>
 
 Essentially, our neural network is **not truly forecasting** future prices—it is merely **replicating past prices**! By staying close to the previous day's price, regardless of whether the market moves up or down, the model **minimizes its Mean Squared Error (MSE)** and produces what appears to be **highly accurate predictions**.

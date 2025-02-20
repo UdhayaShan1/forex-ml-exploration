@@ -78,4 +78,14 @@
         text-align: left;
     }
 }
+
+.markdown-container blockquote {
+  background: #e3f2fd;
+  border-left: 5px solid #2196F3;
+  padding: 10px 20px;
+  margin: 10px 0;
+  color: #0d47a1;
+  font-style: italic;
+}
+
   
