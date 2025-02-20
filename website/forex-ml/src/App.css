@@ -1,0 +1,63 @@
+.app-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: #333;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+}
+
+.content-container {
+    flex: 1;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+
+@media (max-width: 768px) {
+    .content-container {
+        max-width: 95%;
+        padding: 15px;
+    }
+}
+
+.menu-button {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+@media (max-width: 500px) {
+    .menu-button {
+        display: block;
+    }
+}

@@ -1,8 +1,10 @@
 .markdown-container {
     padding: 20px;
-    max-width: 800px;
+    max-width: 900px;
     margin-left: 260px;
     font-size: 18px; 
+    margin: auto;
+    text-align: left;
   }
   
   .markdown-container h1 {
@@ -20,19 +22,21 @@
   .markdown-container h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 22px;
-    font-weight: bold;
   }
   
   .markdown-container p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 18px; 
+    text-align: justify;
+    line-height: 1.5;
   }
   
   .markdown-container img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 0 auto; 
+    margin: 10px auto; 
+
 }
 
 
@@ -57,4 +61,21 @@
     color: blue;
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    .markdown-container {
+        max-width: 95%;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .markdown-container {
+        max-width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        text-align: left;
+    }
+}
   

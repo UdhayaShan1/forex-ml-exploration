@@ -1,23 +1,17 @@
 import { Link } from "react-router-dom";
 import "./SideBar.css";
-function SideBar() {
+
+function SideBar({ isOpen }) {
   return (
-    <aside className="sidebar">
-      <h2 className="sidebar-title">Maching Learning w/ Foreign Exchange</h2>
-      <p className="sidebar-description">Explore the different sections here!</p>
-      <nav>
-        <ul className="sidebar-list">
-          <li>
-            <Link to='/' className="sidebar-link">
-                  Home
-            </Link>
-            <Link to='/misleading' className="sidebar-link">
-                The Misleading Graphs
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </aside>
+    <div className={`sidebar ${isOpen ? "open" : ""}`}>
+      <h2 className="sidebar-title">Machine Learning (For)ex</h2>
+      <p className="sidebar-text">Explore the different sections here!</p>
+      <ul className="sidebar-list">
+        <li><Link to="/" className="sidebar-link">Home</Link></li>
+        <li><Link to="/misleading" className="sidebar-link">Misleading Graphs</Link></li>
+        <li><Link to="/classification" className="sidebar-link">Classification Instead?</Link></li>
+      </ul>
+    </div>
   );
 }
 
