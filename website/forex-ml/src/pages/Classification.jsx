@@ -54,9 +54,78 @@ df['Target'] = np.where(df['Close'].shift(-lookahead) > df['Close'], 1, 0)
 df.dropna(inplace=True)
 \`\`\`
 
+## Metrics to use
+
+### ✅ 1. Accuracy
+
+**📌 Accuracy** is defined as $$\\frac{TP+TN}{TP+TN+FP+FN}$$
+
+However, accuracy is not useful when classes are imbalanced.
+
+For example, if:
+- 90% of the data belongs to class '1' and 10% to class '0'
+
+- The model predicts all instances as '1', accuracy will be 90%, but the model is failing to classify '0' at all.
+
+### ✅ 2. Precision, Recall, and F1-Score
+
+Since accuracy can be misleading, we use Precision, Recall, and F1-score for a better understanding.
+
+**📌 Precision** is defined as $$\\frac{TP}{TP+FP}$$.
+- Measures the percentage of positively classified instances that are actually correct.
+
+- Useful when false positives are costly, e.g., predicting a buy signal when the market is falling.
+
+**📌 Recall** is defined as $$\\frac{TP}{TP+FN}$$
+
+- Measures how many actual positives were correctly classified.
+
+- Useful when missing a positive instance is costly, e.g., missing a profitable trade signal.
+
+**📌 F1-Score (Harmonic Mean of Precision & Recall)** is defined as $$2*\\frac{Precision*Recall}{Precision+Recall}$$. 
+
+- Balances precision and recall.
+
+- Best used when both false positives and false negatives are problematic.
+
+### ✅ 3. AUC-ROC (Area Under the Receiver Operating Characteristic Curve)
+
+The ROC Curve is a plot of:
+- True Positive Rate (Recall) vs. False Positive Rate (FPR) at different classification thresholds.
+
+- The AUC (Area Under the Curve) quantifies the model's ability to separate classes.
+
+**📌 Why Use AUC-ROC?**
+
+- **Threshold-independent:** Unlike accuracy, it evaluates performance across different probability thresholds.
+
+- **Useful for imbalanced datasets:** Even if one class is more frequent, AUC-ROC remains meaningful.
+
+| **AUC Value** | **Interpretation**     |
+|--------------|------------------|
+| **0.9 - 1.0**  | Excellent model   |
+| **0.8 - 0.9**  | Good model        |
+| **0.7 - 0.8**  | Fair model        |
+| **0.6 - 0.7**  | Poor model        |
+| **0.5**        | Random guessing   |
+
+For example, a AUC-ROC for my Logistic Regression with AUC 0.59.
+This shows the model is slightly better than random.
+
+<figure>
+  <img src="${import.meta.env.BASE_URL}images/roc-curve-1seq-logistic.png" alt="AUC-ROC for Logistic Regression with 1 seq" width="500px">
+</figure>
 
 
+## Summary of Metrics
 
+| **Metric** | **Use Case**     |
+|--------------|------------------|
+| **Accuracy**  | Only when classes are balanced.   |
+| **Precision**  | When false positives are costly (e.g., incorrect buy signals).        |
+| **Recall**  | When false negatives are costly (e.g., missing trading opportunities).     |
+| **F1-Score**  | When both false positives and false negatives matter.        |
+| **AUC-ROC**        | To measure model’s ranking ability and performance across different thresholds.   |
     
     
     `
