@@ -39,7 +39,7 @@ If you wish to contribute please do so by PRs to https://github.com/UdhayaShan1/
                           const match = /language-(\w+)/.exec(className || "");
                           return !inline && match ? (
                               <SyntaxHighlighter
-                                  style={atomDark} // You can change the theme
+                                  style={atomDark}
                                   language={match[1]}
                                   PreTag="div"
                                   {...props}

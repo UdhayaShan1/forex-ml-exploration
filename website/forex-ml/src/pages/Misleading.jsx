@@ -398,7 +398,7 @@ Using such a model for trading would be a **bad idea**, as it provides **no real
                       const match = /language-(\w+)/.exec(className || "");
                       return !inline && match ? (
                           <SyntaxHighlighter
-                              style={atomDark} // You can change the theme
+                              style={atomDark}
                               language={match[1]}
                               PreTag="div"
                               {...props}

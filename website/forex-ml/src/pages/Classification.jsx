@@ -140,7 +140,7 @@ This shows the model is slightly better than random.
                       const match = /language-(\w+)/.exec(className || "");
                       return !inline && match ? (
                           <SyntaxHighlighter
-                              style={atomDark} // You can change the theme
+                              style={atomDark}
                               language={match[1]}
                               PreTag="div"
                               {...props}

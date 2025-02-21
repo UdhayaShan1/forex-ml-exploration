@@ -67,13 +67,13 @@ function Logistic() {
     useEffect(() => {
         let stringError = "";
         if (!validNumber(features.x1)) {
-            stringError = "Enter a Open Price between 1 and 200";
+            stringError = "Enter a Open Price between 0 and 200";
         } else if (!validNumber(features.x2)) {
-            stringError = "Enter a High Price between 1 and 200";
+            stringError = "Enter a High Price between 0 and 200";
         } else if (!validNumber(features.x3)) {
-            stringError = "Enter a Low Price between 1 and 200";
+            stringError = "Enter a Low Price between 0 and 200";
         } else if (!validNumber(features.x4)) {
-            stringError = "Enter a Close Price between 1 and 200";
+            stringError = "Enter a Close Price between 0 and 200";
         }
 
         if (stringError.length != 0) {
@@ -188,7 +188,7 @@ However, modern libraries like \`sklearn's LogisticRegression\` does most of the
                       const match = /language-(\w+)/.exec(className || "");
                       return !inline && match ? (
                           <SyntaxHighlighter
-                              style={atomDark} // You can change the theme
+                              style={atomDark}
                               language={match[1]}
                               PreTag="div"
                               {...props}
