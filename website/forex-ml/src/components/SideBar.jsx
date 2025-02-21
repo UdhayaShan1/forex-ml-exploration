@@ -10,9 +10,10 @@ function SideBar({ isOpen }) {
         <li><Link to="/" className="sidebar-link">Home</Link></li>
         <p className="sidebar-seperator">The Motivation</p>
         <li><Link to="/misleading" className="sidebar-link">Misleading Regression</Link></li>
-        <li><Link to="/classification" className="sidebar-link">Classification Instead?</Link></li>
+        <li><Link to="/classification" className="sidebar-link">Classification And Metrics</Link></li>
         <p className="sidebar-seperator">Simple Models</p>
         <li><Link to="/logistic" className="sidebar-link">Intro to Logistic Regression</Link></li>
+        <li><Link to="/logisticimpl" className="sidebar-link">Logistic Regression Analysis</Link></li>
       </ul>
     </div>
   );
